@@ -7,7 +7,7 @@ This repository contains the specifications for Topology Protocol and all its ne
 All official and unofficial implementations should comply with these specifications to ensure the correct interoperability.
 These specifications are independent of language or implementations.
 
-You can read the process of introducing, revising, and adoptiong a new specification, [here](lifecycle.md).
+You can read the process of introducing, revising, and adoptiong a new specification, [here](framework.md).
 
 Currently, the Topology Protocol is in an exciting phase where we are building the specifications while working on the initial implementations.
 Therefore, most of the specifications are still WIP or drafts.
