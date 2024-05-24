@@ -8,7 +8,7 @@
 
 CURRENTLY WRITING IT
 
-Interest Group: [@t-botclive], [0xMugen]
+Interest Group: [@t-botclive], [@0xMugen]
 
 [@guiltygyoza]: https://github.com/guiltygyoza
 [@d-roak]: https://github.com/d-roak
