@@ -18,6 +18,11 @@ Contains the specification title, a one-liner summary, the lifecycle stage, the 
 The author(s) are the ones who wrote the original specification. The value is static and should not change with further revisions.
 
 The lifecycle stage can be one of the following:
+- draft: A draft that should be reviewed and implementable.
+- reliable: It might have space for improvement, it's already implemented. It can be used in development.
+- stable: Well-defined and implemented. It can be used in production.
+- deprecated: Not used anymore.
+The stages evolve from `draft -> reliable -> stable`. At any stage, it can be moved to deprecated if it's no longer relevant.
 
 The interest group is the group of individuals who expressed interest in the specification and might help review or improve it. People can be added/removed according to activity.
 
