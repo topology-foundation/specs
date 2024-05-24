@@ -19,7 +19,7 @@ The author(s) are the ones who wrote the original specification. The value is st
 
 The lifecycle stage can be one of the following:
 - draft: A draft that should be reviewed and implementable.
-- reliable: It might have space for improvement, it's already implemented. It can be used in development.
+- reliable: It might have space for improvement, it has at least one implementation. It can be used in development.
 - stable: Well-defined and implemented. It can be used in production.
 - deprecated: Not used anymore.
 
