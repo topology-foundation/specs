@@ -16,7 +16,8 @@ Therefore, most of the specifications are still WIP or drafts.
 
 `// The way sections are defined is currently provisional and might change`
 - Topology Protocol
-- Conflic-free Replicated Objects (CRO)
+- [CRO](cro) - Conflict-free Replicated Objects
+
 - Networking
     - Message Dissemination
 
