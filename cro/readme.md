@@ -4,11 +4,11 @@
 
 | Lifecycle Stage | Author(s)                 | Latest Revision |
 |-----------------|---------------------------|-----------------|
-| draft           | [@guiltygyoza], [@d-roak] | r0, 2024-05-24  |
+| draft           | [@guiltygyoza](https://github.com/guiltygyoza), [@d-roak](https://github.com/d-roak) | r0, 2024-05-24  |
 
 CURRENTLY WRITING IT
 
-Interest Group: [@guiltygyoza](https://github.com/guiltygyoza), [@d-roak](https://github.com/d-roak), [@0xMugen](https://github.com/0xMugen)
+Interest Group: [@0xMugen](https://github.com/0xMugen)
 
 ## Overview
 
