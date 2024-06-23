@@ -33,17 +33,26 @@ The merge function specifies how the states of two replicas of the same CRO are 
 TBD
 
 ## Capabilities and Messages
+Intro TBD; Things to clarify
+
+- we need clarity on the relationship between pubsub group topic and object ID, specifically is there's a level of indirection between them i.e. if topic maps to object ID one to one or if the mapping is one to many.
+
+- Q: A new peer wishes to "join" object X. Examine this scenario: the peer synchronizes on X first, then upon finishing the sync, the peer subscribes to X. Assume synchronization means synchronizing on the history of an object at the moment of sync request. Also, assume subscription means receiving all updates to the object *after* the subscription is activated. I am worried that there can be "gaps" in the causal history of updates between the moment of synchronization and the moment of subscribe.
 
 ### CREATE
+TBD; blueprints
 
 ### UPDATE
+`updateObject (local object replica, update data)`
 
 ### SUBSCRIBE
+`subscribeObjectByID (object ID)`
 
 ### UNSUBSCRIBE
+`unsubscribeObjectByID (object ID)`
 
 ### SYNCHRONISE
-
+TBD; `synchronizeObjectByID (object ID)` which connects to a random peer currently subscribing to the object ID and synchronizes with it?
 
 ## Security
 
