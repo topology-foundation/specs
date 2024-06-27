@@ -35,9 +35,9 @@ TBD
 ## Capabilities and Messages
 Intro TBD; Things to clarify
 
-- we need clarity on the relationship between pubsub group topic and object ID, specifically is there's a level of indirection between them i.e. if topic maps to object ID one to one or if the mapping is one to many.
+- we need clarity on the relationship between pubsub group topic and object ID, specifically if there's a level of indirection between them i.e. if topic maps to object ID one to one or if the mapping is one to many. propose: go with one to one mapping now, and add indirection later if desirable indicated by usage pattern
 
-- Q: A new peer wishes to "join" object X. Examine this scenario: the peer synchronizes on X first, then upon finishing the sync, the peer subscribes to X. Assume synchronization means synchronizing on the history of an object at the moment of sync request. Also, assume subscription means receiving all updates to the object *after* the subscription is activated. I am worried that there can be "gaps" in the causal history of updates between the moment of synchronization and the moment of subscribe.
+- Q: A new peer wishes to "join" object X. Examine this scenario: the peer synchronizes on X first, then upon finishing the sync, the peer subscribes to X. Assume synchronization means synchronizing on the history of an object at the moment of sync request. Also, assume subscription means receiving all updates to the object *after* the subscription is activated. I am worried that there can be "gaps" in the causal history of updates between the moment of synchronization and the moment of subscribe. tl;dr of this question is what are the detailed steps for a new peer to join an object and catch up.
 
 ### CREATE
 TBD; blueprints
