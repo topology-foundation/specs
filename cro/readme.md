@@ -11,57 +11,64 @@ CURRENTLY WRITING IT
 Interest Group: [@0xMugen](https://github.com/0xMugen)
 
 ## Overview
-Conflict-free Replicated Object (CRO) is the primary abstraction of the Topology Protocol. This document specifies CRO's internal structure and their 5 basic capabilities.
+Conflict-free Replicated Object (CRO) is the primary abstraction of the Topology Protocol. This document specifies CRO's internal structure, interaction methods, and considerations in extensibility and security.
 
 ## Introduction
-CROs are programmable objects that are replicated, updateable by multiple writers concurrently and in a coordination-free manner. The design purpose of CROs is to provide a simple, lightweight, and flexible abstraction for constructing peer-to-peer multiplayer applications.
+Conflict-free Replicated Object (CRO) is the core abstraction of the Topology Protocol, designed to enable real-time, multi-user, interoperable, and censorship-resistant applications on open decentralized networks. CROs are composable programmable objects that can be updated concurrently in real-time and subscribed to as publish/subscribe (PubSub) groups on open peer-to-peer (P2P) networks.
 
-The key properties of CROs are provided by conflict-free replicated data types (CRDTs). CROs are composable by way of CRDT's composability, making every CRO effectively a compound CRDT.
+The protocol defines the basic structure that every CRO must follow. The protocol also defines a set of methods for interacting with any CRO.
 
 ## Structure
-Every CRO consists of the following components: states, mutators, accessors, and a merge function.
+The basic structure of every CRO consists of the following components: state, interface, signal handlers, merge function, and additional functions.
 
-States are typed either by CRDTs or by other CROs. Topology Protocol specifies a set of built-in CRDTs that are correct, which serve as the building blocks for CROs.
+**Q1: is hash graph opt-in or forced? for example, a CRO whose state is just a GSet doesn't need hash graph because ordering doesn't matter for it.**
 
-Mutators are functions that modify the states. Mutators must be monotonic: they must never destroy information from states, only inflate them. Monotonicity is the basis for coordination-free state consistency [Hellerstein & Alvaro 2019].
+### State
+States are typed by either built-in CRDTs provided by the protocol, or by other CROs.
 
-Accessors are read-only functions that materialize the states into values.
+### Interface
+The interface specifies the set of signals recognized by the CRO, as well as the set of functions that can be invoked at any replica of the CRO.
 
-The merge function specifies how the states of two replicas of the same CRO are merged into a single set of states. This function must be commutative.
+### Signal handlers
+Signal handlers turn signals into operations applied on the state.
+
+### Merge function
+The merge function specifies how the state coming from a peer replica is merged with the local state. This function must be commutative, associative, and idempotent: denote the merge operation as $\cup$, then $A \cup B = B \cup A$, $A \cup (B \cup C) = (A \cup B) \cup C$, and $A \cup B \cup B = A \cup B$.
+
+### Additional functions
+CRO may have additional functions, invocable by any replica locally. Some functions may be accessors that materialize the state into values, dropping tombstones and metadata. Other functions may apply operations on the state.
+
+## Methods
+Topology Protocol defines a set of interaction methods that indicate the desired action to be performed on a given CRO.
+
+### CREATE
+The `CREATE` method declares a new CRO and its corresponding PubSub group.
+
+**Note: assuming one CRO corresponds to one PubSub group**
+
+### UPDATE
+TBD; The `UPDATE` method ...
+
+**Q3: what is the relationship between `UPDATE` and CRO signal? also, for a signal that is sent to a CRO replica, is the signal wrapped in a message and gossiped through the subscriber subnet?**
+
+### SUBSCRIBE
+The `SUBSCRIBE` method subscribes the requester to the given PubSub group.
+
+### UNSUBSCRIBE
+The `UNSUBSCRIBE` method unsubscribes the requester from the given PubSub group.
+
+### SYNC
+The `SYNC` method reconciles the difference between the local CRO state and the CRO state at the given peer.
+
+**Q4: reconciling state? or hash graph? related to Q1**
 
 ## Extensibility
 TBD
 
-## Capabilities and Messages
-Intro TBD; Things to clarify
-
-- we need clarity on the relationship between pubsub group topic and object ID, specifically if there's a level of indirection between them i.e. if topic maps to object ID one to one or if the mapping is one to many. propose: go with one to one mapping now, and add indirection later if desirable indicated by usage pattern
-
-- Q: A new peer wishes to "join" object X. Examine this scenario: the peer synchronizes on X first, then upon finishing the sync, the peer subscribes to X. Assume synchronization means synchronizing on the history of an object at the moment of sync request. Also, assume subscription means receiving all updates to the object *after* the subscription is activated. I am worried that there can be "gaps" in the causal history of updates between the moment of synchronization and the moment of subscribe. tl;dr of this question is what are the detailed steps for a new peer to join an object and catch up.
-
-### CREATE
-TBD; blueprints
-
-### UPDATE
-`updateObject (local object replica, update data)`
-
-### SUBSCRIBE
-`subscribeObjectByID (object ID)`
-
-### UNSUBSCRIBE
-`unsubscribeObjectByID (object ID)`
-
-### SYNCHRONISE
-TBD; `synchronizeObjectByID (object ID)` which connects to a random peer currently subscribing to the object ID and synchronizes with it?
-
 ## Security
-
 Any security consideration that should be taken on the specification or protocol presented.
 
 ## References
 
-[Hellerstein & Alvaro 2019] https://arxiv.org/pdf/1901.01930
-
 ## Copyright
-
 Copyright and related rights are waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
