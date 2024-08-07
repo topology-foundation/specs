@@ -33,7 +33,7 @@ The interface specifies the set of signals recognized by the CRO, as well as the
 Signal handlers turn signals into operations applied on the state.
 
 ### Merge function
-The merge function specifies how the state coming from a peer replica is merged with the local state. This function must be commutative, associative, and idempotent: denote the merge operation as $\cup$, then $A \cup B = B \cup A$, $A \cup (B \cup C) = (A \cup B) \cup C$, and $A \cup B \cup B = A \cup B$.
+The merge function specifies how the state coming from a peer replica is merged with the local state. This function must be commutative, associative, and idempotent: denote the merge operation as $\cup$, then $A \cup B = B \cup A$, $A \cup (B \cup C) = (A \cup B) \cup C$, and $A \cup A = A$.
 
 ### Additional functions
 CRO may have additional functions, invocable by any replica locally. Some functions may be accessors that materialize the state into values, dropping tombstones and metadata. Other functions may apply operations on the state.
