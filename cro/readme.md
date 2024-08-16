@@ -4,7 +4,7 @@
 
 | Lifecycle Stage | Author(s)                 | Latest Revision |
 |-----------------|---------------------------|-----------------|
-| draft           | [@guiltygyoza](https://github.com/guiltygyoza), [@d-roak](https://github.com/d-roak) | r0, 2024-05-24  |
+| draft           | [@guiltygyoza](https://github.com/guiltygyoza), [@d-roak](https://github.com/d-roak) | r1, 2024-08-16  |
 
 CURRENTLY WRITING IT
 
