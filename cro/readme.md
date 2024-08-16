@@ -21,7 +21,7 @@ The protocol defines the basic structure that every CRO must follow. The protoco
 ## Structure
 The basic structure of every CRO consists of the following components: state, interface, signal handlers, merge function, and additional functions.
 
-**Q1: is hash graph opt-in or forced? for example, a CRO whose state is just a GSet doesn't need hash graph because ordering doesn't matter for it.**
+Underlying every CRO is a hash graph, which represents the operation history of the CRO and captures the causal relations among the operations.
 
 ### State
 States are typed by either built-in CRDTs provided by the protocol, or by other CROs.
@@ -49,8 +49,6 @@ The `CREATE` method declares a new CRO and its corresponding PubSub group.
 ### UPDATE
 TBD; The `UPDATE` method ...
 
-**Q3: what is the relationship between `UPDATE` and CRO signal? also, for a signal that is sent to a CRO replica, is the signal wrapped in a message and gossiped through the subscriber subnet?**
-
 ### SUBSCRIBE
 The `SUBSCRIBE` method subscribes the requester to the given PubSub group.
 
@@ -58,9 +56,7 @@ The `SUBSCRIBE` method subscribes the requester to the given PubSub group.
 The `UNSUBSCRIBE` method unsubscribes the requester from the given PubSub group.
 
 ### SYNC
-The `SYNC` method reconciles the difference between the local CRO state and the CRO state at the given peer.
-
-**Q4: reconciling state? or hash graph? related to Q1**
+The `SYNC` method reconciles the difference between the local hash graph and the hash graph at the given peer.
 
 ## Extensibility
 TBD
