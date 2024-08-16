@@ -35,28 +35,14 @@ Signal handlers turn signals into operations applied on the state.
 ### Merge function
 The merge function specifies how the state coming from a peer replica is merged with the local state. This function must be commutative, associative, and idempotent: denote the merge operation as $\cup$, then $A \cup B = B \cup A$, $A \cup (B \cup C) = (A \cup B) \cup C$, and $A \cup A = A$.
 
+### Semantics
+TBD
+
+## Hash graph
+TBD
+
 ### Additional functions
 CRO may have additional functions, invokable by any replica locally. Some functions may be accessors that materialize the state into values without tombstones and metadata. Other functions may apply operations (writes) on the state.
-
-## Methods
-Topology Protocol defines a set of interaction methods that indicate the desired action to be performed on a given CRO.
-
-### CREATE
-The `CREATE` method declares a new CRO and its corresponding PubSub group.
-
-**Note: assuming one CRO corresponds to one PubSub group**
-
-### UPDATE
-TBD; The `UPDATE` method ...
-
-### SUBSCRIBE
-The `SUBSCRIBE` method subscribes the requester to the given PubSub group.
-
-### UNSUBSCRIBE
-The `UNSUBSCRIBE` method unsubscribes the requester from the given PubSub group.
-
-### SYNC
-The `SYNC` method reconciles the difference between the local hash graph and the hash graph at the given peer.
 
 ## Extensibility
 TBD
