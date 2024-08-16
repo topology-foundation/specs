@@ -15,7 +15,7 @@ Therefore, most of the specifications are still WIP or drafts.
 ## Specifications
 
 `// The way sections are defined is currently provisional and might change`
-- Topology Protocol
+- [Topology Protocol](protocol)
 - [CRO](cro) - Conflict-free Replicated Objects
 
 - Networking
