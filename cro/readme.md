@@ -36,7 +36,7 @@ Signal handlers turn signals into operations applied on the state.
 The merge function specifies how the state coming from a peer replica is merged with the local state. This function must be commutative, associative, and idempotent: denote the merge operation as $\cup$, then $A \cup B = B \cup A$, $A \cup (B \cup C) = (A \cup B) \cup C$, and $A \cup A = A$.
 
 ### Additional functions
-CRO may have additional functions, invocable by any replica locally. Some functions may be accessors that materialize the state into values, dropping tombstones and metadata. Other functions may apply operations on the state.
+CRO may have additional functions, invokable by any replica locally. Some functions may be accessors that materialize the state into values without tombstones and metadata. Other functions may apply operations (writes) on the state.
 
 ## Methods
 Topology Protocol defines a set of interaction methods that indicate the desired action to be performed on a given CRO.
